@@ -6,11 +6,17 @@ interface ContextComponentProps {
 }
 
 function ContextProvider({ children }: ContextComponentProps) {
-  const [author, setAuthor] = useState<string | undefined>(undefined);
+  const [authorId, setAuthorId] = useState<number | undefined>(undefined);
+  const [locationId, setLocationId] = useState<number | undefined>(undefined);
 
   const contextValue = useMemo(
-    () => ({ author, setAuthor }),
-    [author, setAuthor],
+    () => ({
+      authorId,
+      setAuthorId,
+      locationId,
+      setLocationId,
+    }),
+    [authorId, setAuthorId, locationId, setLocationId],
   );
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;

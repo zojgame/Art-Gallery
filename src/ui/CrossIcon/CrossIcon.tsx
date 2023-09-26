@@ -1,7 +1,7 @@
 import styles from './styles.module.scss';
 
 interface CrossUIProps {
-  handleOnClick: () => void;
+  handleOnClick: (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 }
 
 function CrossUI({ handleOnClick }: CrossUIProps) {

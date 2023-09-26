@@ -5,11 +5,16 @@ import { CrossUI, ArrowUI } from '../../ui';
 
 interface SelectComponentProps {
   options: Options;
-  onItemSelect: (item: Option) => void;
+  onItemSelect: (item: number | undefined) => void;
+  label: string;
 }
 
-function SelectComponent({ options, onItemSelect }: SelectComponentProps) {
-  const [isActive, setIsActive] = useState(true);
+function SelectComponent({
+  options,
+  onItemSelect,
+  label,
+}: SelectComponentProps) {
+  const [isActive, setIsActive] = useState(false);
   const [selectedItem, setSelectedItem] = useState<undefined | Option>(
     undefined,
   );
@@ -40,12 +45,17 @@ function SelectComponent({ options, onItemSelect }: SelectComponentProps) {
     const option = options.find((opt) => opt.id === Number(optionId));
     if (option) {
       setSelectedItem(option);
-      onItemSelect(option);
+      onItemSelect(option.id);
     }
   };
 
-  const handleOnClearClick = () => {
+  const handleOnClearClick = (
+    event: React.MouseEvent<SVGSVGElement, MouseEvent>,
+  ) => {
+    event.stopPropagation();
     setSelectedItem(undefined);
+    setIsActive(false);
+    onItemSelect(undefined);
   };
 
   return (
@@ -58,7 +68,7 @@ function SelectComponent({ options, onItemSelect }: SelectComponentProps) {
     >
       <div className={`${styles.select_value}`}>
         <div className={styles.select_title}>
-          {`${selectedItem ? selectedItem.value : 'Author'}`}
+          {`${selectedItem ? selectedItem.value : label}`}
         </div>
         <div className={styles.icons}>
           {selectedItem && <CrossUI handleOnClick={handleOnClearClick} />}

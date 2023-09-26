@@ -10,14 +10,14 @@ export type Paint = {
 export type Paints = Paint[];
 
 export type Author = {
-  id: string;
+  id: number;
   name: string;
 };
 
 export type Authors = Author[];
 
 export type Location = {
-  id: string;
+  id: number;
   location: string;
 };
 
