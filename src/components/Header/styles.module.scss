@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.theme_button {
+  background: none;
+}
+
+.theme_button:hover,
+.theme_button {
+  border: none;
+}

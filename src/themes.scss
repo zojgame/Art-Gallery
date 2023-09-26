@@ -1,0 +1,13 @@
+body {
+  --background-color-light: #fff;
+  --background-color-dark: #000;
+  --font-color-light: #000;
+  --font-color-dark: #fff;
+
+  --second-font-color-light: #0000004d;
+  --second-font-color-dark: #ffffff4d;
+
+  --second-font-color: var(--second-font-color-dark);
+  --font-color: var(--font-color-dark);
+  --background-color: var(--background-color-dark);
+}

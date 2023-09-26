@@ -1,0 +1,1 @@
+export { CompanyIcon } from './CompanyIcon';
