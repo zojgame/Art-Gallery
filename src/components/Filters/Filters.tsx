@@ -12,38 +12,46 @@ function FiltersComponent() {
   const { isLoading: isAuthorsLoading, data: authors } = useAuthors();
   const { isLoading: isLocationsLoading, data: locations } = useLocations();
   const { setAuthorId, setLocationId, setTitle } = useContext(Context)!;
-  const authorsToOptions = convertAuthorsToOptions(authors);
-  // const locationsToOptions = useMemo(
-  //   () => convertLocationsToOptions(locations),
-  //   [locations],
-  // );
   const locationsToOptions = useMemo(
     () => convertLocationsToOptions(locations),
     [locations],
   );
+  const authorsToOptions = useMemo(
+    () => convertAuthorsToOptions(authors),
+    [authors],
+  );
 
-  const onAuthorSelect = useCallback((authorId: number | undefined) => {
-    setAuthorId(authorId);
-  }, []);
+  const onAuthorSelect = useCallback(
+    (authorId: number | undefined) => {
+      setAuthorId(authorId);
+    },
+    [setAuthorId],
+  );
 
-  const onLocationSelect = useCallback((locationId: number | undefined) => {
-    setLocationId(locationId);
-  }, []);
+  const onLocationSelect = useCallback(
+    (locationId: number | undefined) => {
+      setLocationId(locationId);
+    },
+    [setLocationId],
+  );
 
-  const onTitleSelect = useCallback((title: string | undefined) => {
-    setTitle(title);
-  }, []);
+  const onTitleSelect = useCallback(
+    (title: string | undefined) => {
+      setTitle(title);
+    },
+    [setTitle],
+  );
 
   return (
     <div className={styles.filters_container}>
       <InputComponent onInputSubmit={onTitleSelect} label="Name" />
-      {/* {!isAuthorsLoading && (
+      {!isAuthorsLoading && (
         <SelectComponent
           label="Authors"
           options={authorsToOptions}
           onItemSelect={onAuthorSelect}
         />
-      )} */}
+      )}
       {!isLocationsLoading && (
         <SelectComponent
           label="Locations"

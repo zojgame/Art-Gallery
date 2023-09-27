@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './styles.module.scss';
 import { Option, Options } from '../../types';
 import { CrossUI, ArrowUI } from '../../ui';
+import React from 'react';
 
 interface SelectComponentProps {
   options: Options;
@@ -9,12 +10,11 @@ interface SelectComponentProps {
   label: string;
 }
 
-function SelectComponent({
+const SelectComponent = React.memo(function SelectComponent({
   options,
-  onItemSelect,
   label,
+  onItemSelect,
 }: SelectComponentProps) {
-  console.log('Render', options[0]);
   const [isActive, setIsActive] = useState(false);
   const [selectedItem, setSelectedItem] = useState<undefined | Option>(
     undefined,
@@ -83,6 +83,6 @@ function SelectComponent({
       </div>
     </div>
   );
-}
+});
 
 export { SelectComponent };
