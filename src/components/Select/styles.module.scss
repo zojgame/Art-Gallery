@@ -60,14 +60,16 @@
 
 .select_value {
   display: flex;
-  width: 215px;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
+  gap: 5px;
   text-align: left;
-  padding: 0 15px 0 8px;
   min-height: 45px;
 
   .icons {
+    height: 100%;
+    align-items: center;
     display: flex;
     gap: 10px;
   }
@@ -102,7 +104,7 @@
     z-index: 10;
     width: 265px;
     height: 300px;
-    top: 45px;
+    top: 43px;
     left: -1px;
     border-radius: 0 0 8px 8px;
     box-sizing: border-box;

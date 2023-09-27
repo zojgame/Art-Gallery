@@ -3,18 +3,16 @@ import styles from './styles.module.scss';
 import { Option, Options } from '../../types';
 import { CrossUI, ArrowUI } from '../../ui';
 
-interface SelectComponentProps {
+interface InputRangeComponentProps {
   options: Options;
   onItemSelect: (item: number | undefined) => void;
   label: string;
 }
 
-function SelectComponent({
-  options,
+function InputRangeComponent({
   onItemSelect,
   label,
-}: SelectComponentProps) {
-  console.log('Render', options[0]);
+}: InputRangeComponentProps) {
   const [isActive, setIsActive] = useState(false);
   const [selectedItem, setSelectedItem] = useState<undefined | Option>(
     undefined,
@@ -31,17 +29,6 @@ function SelectComponent({
     }
     if (event.code === 'Enter') {
       setIsActive((prev) => !prev);
-    }
-  };
-
-  const handleOnOptionClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => {
-    const optionId = (event.target as HTMLButtonElement).dataset.value;
-    const option = options.find((opt) => opt.id === Number(optionId));
-    if (option) {
-      setSelectedItem(option);
-      onItemSelect(option.id);
     }
   };
 
@@ -62,7 +49,7 @@ function SelectComponent({
       onKeyDown={handleOnKeyDownSelect}
       tabIndex={0}
     >
-      <div className={styles.select_value}>
+      <div className={`${styles.select_value}`}>
         <div className={styles.select_title}>
           {`${selectedItem ? selectedItem.value : label}`}
         </div>
@@ -71,18 +58,8 @@ function SelectComponent({
           <ArrowUI className={styles.arrow_icon} />
         </div>
       </div>
-
-      <div className={styles.select_container} onClick={handleOnOptionClick}>
-        <ul className={styles.select_option_container}>
-          {options.map((opt) => (
-            <li key={opt.id} data-value={opt.id}>
-              {opt.value}
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 }
 
-export { SelectComponent };
+export { InputRangeComponent };

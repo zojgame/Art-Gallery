@@ -26,7 +26,8 @@ function HeaderComponent() {
   const handleOnThemeKeyDown = (
     event: React.KeyboardEvent<HTMLButtonElement>,
   ) => {
-    if (event.code === 'KeyT') {
+    if (event.code === 'Enter') {
+      event.preventDefault();
       if (theme === 'light') {
         setTheme('dark');
       } else {
@@ -39,6 +40,7 @@ function HeaderComponent() {
     <header className={styles.header}>
       <CompanyIcon />
       <button
+        tabIndex={0}
         type="button"
         className={styles.theme_button}
         onClick={handleOnThemeSwitchClick}

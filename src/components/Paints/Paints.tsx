@@ -6,8 +6,8 @@ import { usePaintings } from '../../hooks';
 import { Context } from '../../store';
 
 export function PaintsComponent() {
-  const { authorId, locationId } = useContext(Context)!;
-  const { data: paints, isLoading } = usePaintings(authorId, locationId);
+  const { authorId, locationId, title } = useContext(Context)!;
+  const { data: paints, isLoading } = usePaintings(authorId, locationId, title);
 
   return (
     <div className={styles.cards_container}>

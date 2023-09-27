@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useCallback, useContext, useMemo } from 'react';
 import { convertAuthorsToOptions } from '../../consts';
 import { useAuthors, useLocations } from '../../hooks';
 import { SelectComponent } from '../Select';
@@ -6,31 +6,44 @@ import { SelectComponent } from '../Select';
 import styles from './styles.module.scss';
 import { Context } from '../../store';
 import { convertLocationsToOptions } from '../../consts/converting';
+import { InputComponent } from '..';
 
 function FiltersComponent() {
   const { isLoading: isAuthorsLoading, data: authors } = useAuthors();
   const { isLoading: isLocationsLoading, data: locations } = useLocations();
-  const { setAuthorId, setLocationId } = useContext(Context)!;
+  const { setAuthorId, setLocationId, setTitle } = useContext(Context)!;
   const authorsToOptions = convertAuthorsToOptions(authors);
-  const locationsToOptions = convertLocationsToOptions(locations);
+  // const locationsToOptions = useMemo(
+  //   () => convertLocationsToOptions(locations),
+  //   [locations],
+  // );
+  const locationsToOptions = useMemo(
+    () => convertLocationsToOptions(locations),
+    [locations],
+  );
 
-  const onAuthorSelect = (authorId: number | undefined) => {
+  const onAuthorSelect = useCallback((authorId: number | undefined) => {
     setAuthorId(authorId);
-  };
+  }, []);
 
-  const onLocationSelect = (locationId: number | undefined) => {
+  const onLocationSelect = useCallback((locationId: number | undefined) => {
     setLocationId(locationId);
-  };
+  }, []);
+
+  const onTitleSelect = useCallback((title: string | undefined) => {
+    setTitle(title);
+  }, []);
 
   return (
     <div className={styles.filters_container}>
-      {!isAuthorsLoading && (
+      <InputComponent onInputSubmit={onTitleSelect} label="Name" />
+      {/* {!isAuthorsLoading && (
         <SelectComponent
           label="Authors"
           options={authorsToOptions}
           onItemSelect={onAuthorSelect}
         />
-      )}
+      )} */}
       {!isLocationsLoading && (
         <SelectComponent
           label="Locations"
