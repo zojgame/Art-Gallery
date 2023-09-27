@@ -5,4 +5,7 @@ export {
   API_URL,
 } from './urls';
 
-export { convertAuthorsToOptions } from './converting';
+export {
+  convertAuthorsToOptions,
+  convertLocationsToOptions,
+} from './converting';

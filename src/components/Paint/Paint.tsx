@@ -4,9 +4,15 @@ import { API_URL } from '../../consts';
 
 interface PaintComponentProps {
   paint: Paint;
+  author: string;
+  location: string;
 }
 
-export function PaintComponent({ paint }: PaintComponentProps) {
+export function PaintComponent({
+  paint,
+  author,
+  location,
+}: PaintComponentProps) {
   return (
     <div className={styles.card}>
       <img
@@ -19,7 +25,7 @@ export function PaintComponent({ paint }: PaintComponentProps) {
           <div className={styles.name}>{paint.name}</div>
           <div className={styles.author}>
             <div className={styles.label}>Author:</div>
-            <div>{paint.authorId}</div>
+            <div>{author}</div>
           </div>
           <div className={styles.created}>
             <div className={styles.label}>Created:</div>
@@ -27,7 +33,7 @@ export function PaintComponent({ paint }: PaintComponentProps) {
           </div>
           <div className={styles.location}>
             <div className={styles.label}>Location:</div>
-            <div>{paint.locationId}</div>
+            <div>{location}</div>
           </div>
         </div>
       </div>

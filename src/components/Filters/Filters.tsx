@@ -1,12 +1,12 @@
-import { useCallback, useContext, useMemo } from 'react';
-import { convertAuthorsToOptions } from '../../consts';
-import { useAuthors, useLocations } from '../../hooks';
-import { SelectComponent } from '../Select';
-
 import styles from './styles.module.scss';
+import { useCallback, useContext, useMemo } from 'react';
+import {
+  convertAuthorsToOptions,
+  convertLocationsToOptions,
+} from '../../consts';
+import { useAuthors, useLocations } from '../../hooks';
 import { Context } from '../../store';
-import { convertLocationsToOptions } from '../../consts/converting';
-import { InputComponent } from '..';
+import { InputComponent, SelectComponent } from '../../components';
 
 function FiltersComponent() {
   const { isLoading: isAuthorsLoading, data: authors } = useAuthors();
