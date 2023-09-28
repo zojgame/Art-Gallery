@@ -9,3 +9,5 @@ export {
   convertAuthorsToOptions,
   convertLocationsToOptions,
 } from './converting';
+
+export { getRangeLabel } from './calculating';

@@ -1,13 +1,18 @@
 body {
   --background-color-light: #fff;
   --background-color-dark: #000;
+
   --font-color-light: #000;
   --font-color-dark: #fff;
 
   --second-font-color-light: #0000004d;
   --second-font-color-dark: #ffffff4d;
 
+  --input-background-color-dark: #fff;
+  --input-background-color-light: #efefef;
+
   --second-font-color: var(--second-font-color-dark);
   --font-color: var(--font-color-dark);
   --background-color: var(--background-color-dark);
+  --input-background-color: var(--input-background-color-dark);
 }

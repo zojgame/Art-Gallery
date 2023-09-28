@@ -7,6 +7,10 @@ interface ContextData {
   setLocationId: React.Dispatch<React.SetStateAction<number | undefined>>;
   title: string | undefined;
   setTitle: React.Dispatch<React.SetStateAction<string | undefined>>;
+  createdFrom: number | undefined;
+  setCreatedFrom: React.Dispatch<React.SetStateAction<number | undefined>>;
+  createdTo: number | undefined;
+  setCreatedTo: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 
 const Context = createContext<ContextData | undefined>(undefined);

@@ -1,62 +1,108 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import styles from './styles.module.scss';
-import { Option, Options } from '../../types';
-import { CrossUI, ArrowUI } from '../../ui';
+import { ArrowUI, CrossUI } from '../../ui';
+import { getRangeLabel } from '../../consts';
 
 interface InputRangeComponentProps {
-  options: Options;
-  onItemSelect: (item: number | undefined) => void;
+  onFormSubmit: (firstValue?: number, secondValue?: number) => void;
+  firstRangeValue: number | undefined;
+  secondRangeValue: number | undefined;
   label: string;
 }
 
 function InputRangeComponent({
-  onItemSelect,
+  onFormSubmit,
   label,
+  firstRangeValue,
+  secondRangeValue,
 }: InputRangeComponentProps) {
-  const [isActive, setIsActive] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<undefined | Option>(
-    undefined,
-  );
-  const handleOnSelectClick = () => {
-    setIsActive((prev) => !prev);
+  const [isFormActive, setIsFormActive] = useState(false);
+  const [firstRange, setFirstRange] = useState<string>('');
+  const [secondRange, setSecondRange] = useState<string>('');
+
+  const handleOnFormClick = () => {
+    setIsFormActive((prev) => !prev);
   };
 
-  const handleOnKeyDownSelect = (
-    event: React.KeyboardEvent<HTMLDivElement>,
-  ) => {
-    if (event.code === 'Tab') {
-      setIsActive(false);
-    }
+  const handleOnFormKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.code === 'Enter') {
-      setIsActive((prev) => !prev);
+      setIsFormActive((prev) => !prev);
+      const firstRangeValue =
+        firstRange === '' ? undefined : Number(firstRange);
+      const secondRangeValue =
+        secondRange === '' ? undefined : Number(secondRange);
+      onFormSubmit(firstRangeValue, secondRangeValue);
     }
   };
 
-  const handleOnClearClick = (
+  const handleOnFormClear = (
     event: React.MouseEvent<SVGSVGElement, MouseEvent>,
   ) => {
     event.stopPropagation();
-    setSelectedItem(undefined);
-    setIsActive(false);
-    onItemSelect(undefined);
+    setFirstRange('');
+    setSecondRange('');
+    onFormSubmit(undefined, undefined);
+    setIsFormActive(false);
   };
+
+  const handleOnFirstRangeValueChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const value = event.target.value;
+
+    if (!isNaN(Number(value))) {
+      setFirstRange(value);
+    }
+  };
+
+  const handleOnSecondRangeValueChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const value = event.target.value;
+
+    if (!isNaN(Number(value))) {
+      setSecondRange(value);
+    }
+  };
+
+  const rangeLabel = useMemo(
+    () => getRangeLabel(firstRangeValue, secondRangeValue),
+    [firstRangeValue, secondRangeValue],
+  );
 
   return (
     <div
       role="button"
-      className={`${styles.select} ${isActive ? styles.select_active : ''}`}
-      onClick={handleOnSelectClick}
-      onKeyDown={handleOnKeyDownSelect}
+      className={`${styles.select} ${isFormActive ? styles.select_active : ''}`}
+      onKeyDown={handleOnFormKeyDown}
       tabIndex={0}
     >
-      <div className={`${styles.select_value}`}>
+      <div className={styles.select_value} onClick={handleOnFormClick}>
         <div className={styles.select_title}>
-          {`${selectedItem ? selectedItem.value : label}`}
+          {rangeLabel ? rangeLabel : label}
         </div>
         <div className={styles.icons}>
-          {selectedItem && <CrossUI handleOnClick={handleOnClearClick} />}
+          {(firstRangeValue || secondRangeValue) && (
+            <CrossUI handleOnClick={handleOnFormClear} />
+          )}
           <ArrowUI className={styles.arrow_icon} />
         </div>
+      </div>
+
+      <div className={styles.select_container}>
+        <input
+          placeholder="from"
+          tabIndex={0}
+          onChange={handleOnFirstRangeValueChange}
+          value={firstRange}
+        />
+        <div>—</div>
+        <input
+          placeholder="before"
+          value={secondRange}
+          tabIndex={0}
+          onChange={handleOnSecondRangeValueChange}
+        />
       </div>
     </div>
   );

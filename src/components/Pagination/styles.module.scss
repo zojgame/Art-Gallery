@@ -1,0 +1,43 @@
+.pagination {
+  display: flex;
+  border: 1px solid var(--font-color);
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 280px;
+  height: 41px;
+  margin-top: 40px;
+
+  div {
+    display: flex;
+    justify-content: center;
+    width: 41px;
+    height: 100%;
+    border: 1px solid var(--font-color);
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    user-select: none;
+    cursor: pointer;
+
+    p {
+      display: flex;
+      align-self: center;
+    }
+  }
+
+  div.disabled {
+    color: var(--second-font-color);
+    cursor: default;
+  }
+
+  div.active {
+    background: var(--font-color);
+    p {
+      color: var(--background-color);
+    }
+  }
+
+  div:first-child {
+    border-left: none;
+  }
+}

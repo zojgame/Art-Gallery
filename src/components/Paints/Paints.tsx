@@ -6,8 +6,15 @@ import { useAuthors, useLocations, usePaintings } from '../../hooks';
 import { Context } from '../../store';
 
 export function PaintsComponent() {
-  const { authorId, locationId, title } = useContext(Context)!;
-  const { data: paints, isLoading } = usePaintings(authorId, locationId, title);
+  const { authorId, locationId, title, createdFrom, createdTo } =
+    useContext(Context)!;
+  const { data: paints, isLoading } = usePaintings(
+    authorId,
+    locationId,
+    title,
+    createdFrom,
+    createdTo,
+  );
   const { data: authors } = useAuthors();
   const { data: locations } = useLocations();
 

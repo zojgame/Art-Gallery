@@ -1,0 +1,1 @@
+export { InputRangeComponent } from './InputRange';

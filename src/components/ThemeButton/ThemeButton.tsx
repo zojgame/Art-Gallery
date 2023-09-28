@@ -9,10 +9,15 @@ function ThemeButtonComponent() {
     const backgroundTheme = `var(--background-color-${theme})`;
     const colorTheme = `var(--font-color-${theme})`;
     const secondColorTheme = `var(--second-font-color-${theme})`;
+    const inputBackgroundColor = `var(--input-background-color-${theme})`;
 
     document.body.style.setProperty('--font-color', colorTheme);
     document.body.style.setProperty('--background-color', backgroundTheme);
     document.body.style.setProperty('--second-font-color', secondColorTheme);
+    document.body.style.setProperty(
+      '--input-background-color',
+      inputBackgroundColor,
+    );
   }, [theme]);
 
   const handleOnThemeSwitchClick = () => {
