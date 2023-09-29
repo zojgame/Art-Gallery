@@ -1,0 +1,10 @@
+.icon {
+  box-sizing: border-box;
+  fill: var(--font-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.icon_left {
+  position: relative;
+  transform: rotate(180deg);
+}

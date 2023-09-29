@@ -1,0 +1,1 @@
+export { ArrowDoubleQuoteIcon } from './ArrowDoubleQuoteIcon';

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { usePage } from '../../hooks';
 import styles from './styles.module.scss';
+import { usePage } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
-
-interface PaginationComponentProps {}
+import { ArrowQuoteIcon, ArrowDoubleQuoteIcon } from '../../ui';
+import { ICON_DIRECTION } from '../../consts';
 
 function PaginationComponent() {
   const page = usePage();
@@ -55,48 +55,45 @@ function PaginationComponent() {
   return (
     <div className={styles.pagination}>
       <div
-        className={`${styles.pagination_item} ${
-          isDisabled ? ` ${styles.disabled}` : ''
-        }`}
+        className={isDisabled ? ` ${styles.disabled}` : ''}
         onClick={handleToStartClick}
       >
-        <p>{`<`}</p>
+        <p>
+          <ArrowDoubleQuoteIcon direction={ICON_DIRECTION.LEFT} />
+        </p>
       </div>
       <div
-        className={`${styles.pagination_item} ${
-          isDisabled ? ` ${styles.disabled}` : ''
-        }`}
+        className={isDisabled ? ` ${styles.disabled}` : ''}
         onClick={handlePrevClick}
       >
-        <p>{`<`}</p>
+        <p>
+          <ArrowQuoteIcon direction={ICON_DIRECTION.LEFT} />
+        </p>
       </div>
       <div
         onClick={handleOnPageClick(startPage)}
-        className={`${styles.pagination_item} ${
-          page === 1 ? `${styles.active}` : ''
-        }`}
+        className={page === 1 ? `${styles.active}` : ''}
       >
         <p>{startPage}</p>
       </div>
       <div
         onClick={handleOnPageClick(startPage + 1)}
-        className={`${styles.pagination_item} ${
-          page === startPage + 1 ? `${styles.active}` : ''
-        }`}
+        className={page === startPage + 1 ? `${styles.active}` : ''}
       >
         <p>{startPage + 1}</p>
       </div>
-      <div
-        className={styles.pagination_item}
-        onClick={handleOnPageClick(startPage + 2)}
-      >
+      <div onClick={handleOnPageClick(startPage + 2)}>
         <p>{startPage + 2}</p>
       </div>
-      <div className={styles.pagination_item} onClick={handleNextClick}>
-        <p>{`>`}</p>
+      <div onClick={handleNextClick}>
+        <p>
+          <ArrowQuoteIcon direction={ICON_DIRECTION.RIGHT} />
+        </p>
       </div>
-      <div className={styles.pagination_item} onClick={handleToEndClick}>
-        <p>{`>`}</p>
+      <div onClick={handleToEndClick}>
+        <p>
+          <ArrowDoubleQuoteIcon direction={ICON_DIRECTION.RIGHT} />
+        </p>
       </div>
     </div>
   );

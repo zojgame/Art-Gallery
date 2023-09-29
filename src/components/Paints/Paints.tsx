@@ -2,18 +2,21 @@ import { useContext } from 'react';
 
 import { PaintComponent } from '../Paint';
 import styles from './styles.module.scss';
-import { useAuthors, useLocations, usePaintings } from '../../hooks';
+import { useAuthors, useLocations, usePage, usePaintings } from '../../hooks';
 import { Context } from '../../store';
 
 export function PaintsComponent() {
   const { authorId, locationId, title, createdFrom, createdTo } =
     useContext(Context)!;
+  const page = usePage();
+
   const { data: paints, isLoading } = usePaintings(
     authorId,
     locationId,
     title,
     createdFrom,
     createdTo,
+    page,
   );
   const { data: authors } = useAuthors();
   const { data: locations } = useLocations();

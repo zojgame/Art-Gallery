@@ -11,3 +11,5 @@ export {
 } from './converting';
 
 export { getRangeLabel } from './calculating';
+
+export { PAGE_LIMIT, ICON_DIRECTION, THEME } from './constants';

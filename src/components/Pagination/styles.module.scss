@@ -6,6 +6,7 @@
   width: 280px;
   height: 41px;
   margin-top: 40px;
+  overflow: hidden;
 
   div {
     display: flex;
@@ -23,6 +24,10 @@
       display: flex;
       align-self: center;
     }
+  }
+
+  div:hover:not(.disabled):not(.active) {
+    background: var(--third-font-color);
   }
 
   div.disabled {
