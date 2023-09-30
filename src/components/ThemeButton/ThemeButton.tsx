@@ -4,9 +4,11 @@ import styles from './styles.module.scss';
 import { THEME } from '../../consts';
 
 function ThemeButtonComponent() {
-  const [theme, setTheme] = useState(THEME.DARK);
+  const currentTheme = localStorage.getItem('theme') ?? THEME.DARK;
+  const [theme, setTheme] = useState(currentTheme);
 
   useEffect(() => {
+    localStorage.setItem('theme', theme);
     const backgroundTheme = `var(--background-color-${theme})`;
     const colorTheme = `var(--font-color-${theme})`;
     const secondColorTheme = `var(--second-font-color-${theme})`;

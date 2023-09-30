@@ -13,13 +13,11 @@ export function PaintComponent({
   author,
   location,
 }: PaintComponentProps) {
+  const imageUrl = `${API_URL}${paint.imageUrl}`;
+
   return (
     <div className={styles.card}>
-      <img
-        className={styles.image}
-        src={`${API_URL}${paint.imageUrl}`}
-        alt={paint.name}
-      />
+      <img className={styles.image} src={imageUrl} alt={paint.name} />
       <div className={styles.info_container}>
         <div className={styles.info}>
           <div className={styles.name}>{paint.name}</div>

@@ -3,7 +3,7 @@ import styles from './styles.module.scss';
 import { usePage } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
 import { ArrowQuoteIcon, ArrowDoubleQuoteIcon } from '../../ui';
-import { ICON_DIRECTION } from '../../consts';
+import { DIRECTION } from '../../consts';
 
 function PaginationComponent() {
   const page = usePage();
@@ -59,7 +59,10 @@ function PaginationComponent() {
         onClick={handleToStartClick}
       >
         <p>
-          <ArrowDoubleQuoteIcon direction={ICON_DIRECTION.LEFT} />
+          <ArrowDoubleQuoteIcon
+            direction={DIRECTION.LEFT}
+            isDisabled={isDisabled}
+          />
         </p>
       </div>
       <div
@@ -67,7 +70,7 @@ function PaginationComponent() {
         onClick={handlePrevClick}
       >
         <p>
-          <ArrowQuoteIcon direction={ICON_DIRECTION.LEFT} />
+          <ArrowQuoteIcon direction={DIRECTION.LEFT} isDisabled={isDisabled} />
         </p>
       </div>
       <div
@@ -87,12 +90,12 @@ function PaginationComponent() {
       </div>
       <div onClick={handleNextClick}>
         <p>
-          <ArrowQuoteIcon direction={ICON_DIRECTION.RIGHT} />
+          <ArrowQuoteIcon direction={DIRECTION.RIGHT} />
         </p>
       </div>
       <div onClick={handleToEndClick}>
         <p>
-          <ArrowDoubleQuoteIcon direction={ICON_DIRECTION.RIGHT} />
+          <ArrowDoubleQuoteIcon direction={DIRECTION.RIGHT} />
         </p>
       </div>
     </div>

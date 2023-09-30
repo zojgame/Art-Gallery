@@ -1,6 +1,6 @@
-export const PAGE_LIMIT = 10;
+export const PAGE_LIMIT = 12;
 
-export enum ICON_DIRECTION {
+export enum DIRECTION {
   RIGHT = 'right',
   LEFT = 'left',
 }

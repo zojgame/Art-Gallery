@@ -14,9 +14,10 @@
 
   .info_container {
     position: relative;
+    user-select: none;
     display: flex;
     height: 145px;
-    bottom: calc(30px + 5px);
+    bottom: calc(30px);
     color: black;
     justify-content: start;
     background-color: rgba(#fff, 0.75);
@@ -43,7 +44,7 @@
     .name {
       font-size: 18px;
       font-weight: 700;
-      line-height: 20px;
+      line-height: 25px;
     }
 
     .label {

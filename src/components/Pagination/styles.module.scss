@@ -1,6 +1,5 @@
 .pagination {
   display: flex;
-  border: 1px solid var(--font-color);
   box-sizing: border-box;
   border-radius: 8px;
   width: 280px;
@@ -9,14 +8,12 @@
   overflow: hidden;
 
   div {
+    border: 1px solid var(--font-color);
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     width: 41px;
     height: 100%;
-    border: 1px solid var(--font-color);
-    border-top: none;
-    border-bottom: none;
-    border-right: none;
     user-select: none;
     cursor: pointer;
 
@@ -30,8 +27,12 @@
     background: var(--third-font-color);
   }
 
+  div:not(div:last-child) {
+    border-right: none;
+  }
+
   div.disabled {
-    color: var(--second-font-color);
+    border-color: var(--second-font-color);
     cursor: default;
   }
 
@@ -43,6 +44,10 @@
   }
 
   div:first-child {
-    border-left: none;
+    border-radius: 8px 0 0 8px;
+  }
+
+  div:last-child {
+    border-radius: 0 8px 8px 0;
   }
 }

@@ -2,14 +2,19 @@ import styles from './styles.module.scss';
 
 interface ArrowQuoteIconProps {
   direction?: string;
+  isDisabled?: boolean;
 }
 
-function ArrowQuoteIcon({ direction = 'right' }: ArrowQuoteIconProps) {
+function ArrowQuoteIcon({
+  direction = 'right',
+  isDisabled = false,
+}: ArrowQuoteIconProps) {
   const isRight = direction === 'right';
 
   return (
     <svg
-      className={`${styles.icon} ${!isRight ? `${styles.icon_left}` : ''}`}
+      className={`${styles.icon} ${!isRight ? `${styles.icon_left}` : ''}
+      ${isDisabled ? `${styles.disabled}` : ''}`}
       width="7.6"
       height="12"
       viewBox="0 0 9 13"

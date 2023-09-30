@@ -4,6 +4,10 @@
   transition: all 0.3s ease-in-out;
 }
 
+.disabled {
+  fill: var(--second-font-color);
+}
+
 .icon_left {
   position: relative;
   transform: rotate(180deg);
