@@ -1,5 +1,4 @@
 import { Authors, Locations, Options } from '../types';
-import { useMemo } from 'react';
 
 export const convertAuthorsToOptions = (
   authors: Authors | undefined,

@@ -15,22 +15,22 @@ const SelectComponent = React.memo(function SelectComponent({
   label,
   onItemSelect,
 }: SelectComponentProps) {
-  const [isActive, setIsActive] = useState(false);
+  const [isFormActive, setIsFormActive] = useState(false);
   const [selectedItem, setSelectedItem] = useState<undefined | Option>(
     undefined,
   );
   const handleOnSelectClick = () => {
-    setIsActive((prev) => !prev);
+    setIsFormActive((prev) => !prev);
   };
 
   const handleOnKeyDownSelect = (
     event: React.KeyboardEvent<HTMLDivElement>,
   ) => {
     if (event.code === 'Tab') {
-      setIsActive(false);
+      setIsFormActive(false);
     }
     if (event.code === 'Enter') {
-      setIsActive((prev) => !prev);
+      setIsFormActive((prev) => !prev);
     }
   };
 
@@ -50,14 +50,14 @@ const SelectComponent = React.memo(function SelectComponent({
   ) => {
     event.stopPropagation();
     setSelectedItem(undefined);
-    setIsActive(false);
+    setIsFormActive(false);
     onItemSelect(undefined);
   };
 
   return (
     <div
       role="button"
-      className={`${styles.select} ${isActive ? styles.select_active : ''}`}
+      className={`${styles.select} ${isFormActive ? styles.select_active : ''}`}
       onClick={handleOnSelectClick}
       onKeyDown={handleOnKeyDownSelect}
       tabIndex={0}

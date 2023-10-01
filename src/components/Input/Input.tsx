@@ -25,7 +25,6 @@ function InputComponent({ onInputSubmit, label }: InputComponentProps) {
   };
 
   const handleOnInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('first', event.target.value);
     setInputTitle(event.target.value);
   };
 

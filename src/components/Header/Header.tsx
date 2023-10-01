@@ -1,5 +1,5 @@
 import { CompanyIcon } from '../../ui';
-import { ThemeButtonComponent } from '..';
+import { ThemeButtonComponent } from '../../components';
 import styles from './styles.module.scss';
 
 function HeaderComponent() {

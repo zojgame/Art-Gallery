@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.scss';
 import { usePage } from '../../hooks';
-import { useNavigate } from 'react-router-dom';
 import { ArrowQuoteIcon, ArrowDoubleQuoteIcon } from '../../ui';
 import { DIRECTION } from '../../consts';
 

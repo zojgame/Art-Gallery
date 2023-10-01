@@ -2,7 +2,6 @@
   transition:
     background-color 0.3s ease-in-out,
     border 0.3s ease-in-out;
-  // z-index: 11;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -27,7 +26,6 @@
   border: 1px solid var(--font-color);
   border-top: 1px solid var(--second-font-color);
   padding: 0 10px;
-  // z-index: 10;
   width: calc(100% + 1.6px);
   height: 300px;
   top: 43px;
@@ -55,7 +53,6 @@
   right: 5.7px;
   height: 280px;
   box-sizing: border-box;
-  // z-index: 100;
 
   li {
     transition: all 0.3s ease-in-out;
@@ -66,7 +63,6 @@
     align-items: center;
     padding: 0;
     padding-left: calc(30px * (100vw / 1366px));
-    // padding-left: 30px;
 
     min-height: 40px;
     width: 100%;
@@ -123,29 +119,6 @@
   }
 }
 
-//FireFox
-.select_option_container {
-  overflow-y: scroll;
-  scrollbar-color: var(--second-font-color) var(--background-color);
-  scrollbar-width: thin;
-}
-
-//Other browsers
-.select_option_container::-webkit-scrollbar {
-  width: 11px;
-  transition: background 0.3s ease-in-out;
-  height: 304px;
-  background: inherit;
-  border-radius: 50px;
-}
-
-.select_option_container::-webkit-scrollbar-thumb {
-  transition: background 0.3s ease-in-out;
-  background: var(--second-font-color);
-  border-radius: 50px;
-  position: relative;
-}
-
 @media (max-width: 1024px) {
   .select {
     .select_title {
@@ -175,4 +148,27 @@
       padding-left: 30px;
     }
   }
+}
+
+//FireFox
+.select_option_container {
+  overflow-y: scroll;
+  scrollbar-color: var(--second-font-color) var(--background-color);
+  scrollbar-width: thin;
+}
+
+//Other browsers
+.select_option_container::-webkit-scrollbar {
+  width: 11px;
+  transition: background 0.3s ease-in-out;
+  height: 304px;
+  background: inherit;
+  border-radius: 50px;
+}
+
+.select_option_container::-webkit-scrollbar-thumb {
+  transition: background 0.3s ease-in-out;
+  background: var(--second-font-color);
+  border-radius: 50px;
+  position: relative;
 }
