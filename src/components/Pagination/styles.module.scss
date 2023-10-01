@@ -51,3 +51,10 @@
     border-radius: 0 8px 8px 0;
   }
 }
+
+@media (max-width: 580px) {
+  .pagination {
+    margin: 0 auto;
+    margin-top: 40px;
+  }
+}

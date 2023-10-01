@@ -1,6 +1,31 @@
 .main_page {
   max-width: 1120px;
   margin: 0 auto;
-  padding-bottom: 97px;
-  padding-top: 35px;
+  padding: 0 42px;
+  padding-top: 97px;
+  padding-bottom: 35px;
+}
+
+@media (max-width: 1024px) {
+  .main_page {
+    padding: 0 42px;
+    padding-top: 35px;
+    padding-bottom: 62px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main_page {
+    padding: 0 34px;
+    padding-top: 35px;
+    padding-bottom: 54px;
+  }
+}
+
+@media (max-width: 580px) {
+  .main_page {
+    padding: 0 20px;
+    padding-top: 25px;
+    padding-bottom: 34px;
+  }
 }

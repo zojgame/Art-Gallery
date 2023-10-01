@@ -27,7 +27,7 @@
 
   input {
     all: unset;
-    width: 100%;
+    width: calc(265px * 0.6 * calc(100vw / 1366px));
     height: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -36,5 +36,32 @@
 
   .icons {
     cursor: pointer;
+  }
+}
+
+@media (max-width: 1024px) {
+  .select_value {
+    input {
+      width: calc(265px * 0.6 * calc(100vw / 1366px));
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .select_value {
+    input {
+      width: calc(215px * 0.7 * calc(100vw / 1366px));
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  .select {
+    width: 100%;
+  }
+  .select_value {
+    input {
+      width: 100%;
+    }
   }
 }

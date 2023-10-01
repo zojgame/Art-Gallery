@@ -1,6 +1,19 @@
 .cards_container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
   gap: 20px;
-  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .cards_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .cards_container {
+    justify-items: center;
+    grid-template-columns: 1fr;
+  }
 }

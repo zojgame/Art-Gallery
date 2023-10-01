@@ -1,6 +1,7 @@
 .card {
-  width: 360px;
-  height: 275px;
+  max-width: 360px;
+  max-height: 275px;
+  height: 275px * 1.116 * calc(100vw / 1366px);
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
@@ -33,12 +34,16 @@
     font-weight: 300;
     gap: 5px;
 
-    .name,
     .author,
     .created,
     .location {
+      line-height: 15px;
       display: flex;
       gap: 8px;
+    }
+
+    .author {
+      gap: 4px;
     }
 
     .name {
@@ -55,4 +60,23 @@
 
 .card:hover .info_container {
   bottom: 145px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 340px;
+    max-height: 249px;
+    height: 249px * calc(100vw / 768px);
+  }
+}
+
+@media (max-width: 580px) {
+  .card {
+    max-width: 360px;
+    max-height: 265px;
+    min-width: 280px;
+    min-height: 205px;
+    height: 265px * calc(100vw / 580px);
+    width: 360px * calc(100vw / 580px);
+  }
 }
