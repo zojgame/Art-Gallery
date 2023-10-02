@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.scss';
 import { Option, Options } from '../../types';
 import { CrossUI, ArrowUI } from '../../ui';
-import { useNavigate } from 'react-router-dom';
 
 interface SelectComponentProps {
   options: Options;
