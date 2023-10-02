@@ -84,7 +84,7 @@
       display: flex;
       margin: 0;
       padding: 15px;
-      width: 95px * (100vw / 1366px);
+      width: 95px * calc(100vw / 1366px);
       max-width: 95px;
       height: 45px;
       box-sizing: border-box;
