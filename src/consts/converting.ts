@@ -3,7 +3,7 @@ import { Authors, Locations, Options } from '../types';
 export const convertAuthorsToOptions = (
   authors: Authors | undefined,
 ): Options => {
-  if (authors === undefined) {
+  if (!authors) {
     return [];
   }
 
@@ -18,7 +18,7 @@ export const convertAuthorsToOptions = (
 export const convertLocationsToOptions = (
   locations: Locations | undefined,
 ): Options => {
-  if (locations === undefined) {
+  if (!locations) {
     return [];
   }
 

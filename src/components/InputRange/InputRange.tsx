@@ -65,10 +65,7 @@ function InputRangeComponent({
     }
   };
 
-  const rangeLabel = useMemo(
-    () => getRangeLabel(firstRangeValue, secondRangeValue),
-    [firstRangeValue, secondRangeValue],
-  );
+  const rangeLabel = getRangeLabel(firstRangeValue, secondRangeValue);
 
   return (
     <div
