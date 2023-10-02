@@ -1,4 +1,5 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.scss';
 import { ArrowUI, CrossUI } from '../../ui';
 import { getRangeLabel } from '../../consts';
@@ -19,6 +20,7 @@ function InputRangeComponent({
   const [isFormActive, setIsFormActive] = useState(false);
   const [firstRange, setFirstRange] = useState<string>('');
   const [secondRange, setSecondRange] = useState<string>('');
+  const navigate = useNavigate();
 
   const handleOnFormClick = () => {
     setIsFormActive((prev) => !prev);
@@ -26,12 +28,19 @@ function InputRangeComponent({
 
   const handleOnFormKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.code === 'Enter') {
+      navigate('../1');
       setIsFormActive((prev) => !prev);
-      const firstRangeValue =
-        firstRange === '' ? undefined : Number(firstRange);
-      const secondRangeValue =
-        secondRange === '' ? undefined : Number(secondRange);
-      onFormSubmit(firstRangeValue, secondRangeValue);
+      const firstValue = firstRange === '' ? undefined : Number(firstRange);
+      const secondValue = secondRange === '' ? undefined : Number(secondRange);
+      onFormSubmit(firstValue, secondValue);
+    }
+  };
+
+  const handleOnFormFieldKeyDown = (
+    event: React.KeyboardEvent<HTMLDivElement>,
+  ) => {
+    if (event.code === 'Tab') {
+      setIsFormActive(false);
     }
   };
 
@@ -48,9 +57,9 @@ function InputRangeComponent({
   const handleOnFirstRangeValueChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    const value = event.target.value;
+    const { value } = event.target;
 
-    if (!isNaN(Number(value))) {
+    if (!Number.isNaN(Number(value))) {
       setFirstRange(value);
     }
   };
@@ -58,26 +67,31 @@ function InputRangeComponent({
   const handleOnSecondRangeValueChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    const value = event.target.value;
+    const { value } = event.target;
 
-    if (!isNaN(Number(value))) {
+    if (!Number.isNaN(Number(value))) {
       setSecondRange(value);
     }
   };
 
   const rangeLabel = getRangeLabel(firstRangeValue, secondRangeValue);
 
+  const handleOnInputClick = (
+    event: React.MouseEvent<HTMLInputElement, MouseEvent>,
+  ) => {
+    event.stopPropagation();
+  };
+
   return (
     <div
       role="button"
       className={`${styles.select} ${isFormActive ? styles.select_active : ''}`}
       onKeyDown={handleOnFormKeyDown}
+      onClick={handleOnFormClick}
       tabIndex={0}
     >
-      <div className={styles.select_value} onClick={handleOnFormClick}>
-        <div className={styles.select_title}>
-          {rangeLabel ? rangeLabel : label}
-        </div>
+      <div role="button" className={styles.select_value}>
+        <div className={styles.select_title}>{rangeLabel || label}</div>
         <div className={styles.icons}>
           {(firstRangeValue || secondRangeValue) && (
             <CrossUI handleOnClick={handleOnFormClear} />
@@ -91,6 +105,7 @@ function InputRangeComponent({
           placeholder="from"
           tabIndex={0}
           onChange={handleOnFirstRangeValueChange}
+          onClick={handleOnInputClick}
           value={firstRange}
         />
         <div>—</div>
@@ -98,6 +113,8 @@ function InputRangeComponent({
           placeholder="before"
           value={secondRange}
           tabIndex={0}
+          onClick={handleOnInputClick}
+          onKeyDown={handleOnFormFieldKeyDown}
           onChange={handleOnSecondRangeValueChange}
         />
       </div>

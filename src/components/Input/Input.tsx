@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import styles from './styles.module.scss';
 import { CrossUI } from '../../ui';
@@ -9,9 +10,11 @@ interface InputComponentProps {
 
 function InputComponent({ onInputSubmit, label }: InputComponentProps) {
   const [inputTitle, setInputTitle] = useState<string>('');
+  const navigate = useNavigate();
 
   const handleOnKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.code === 'Enter') {
+      navigate('../1');
       onInputSubmit(inputTitle);
     }
   };

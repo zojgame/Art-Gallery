@@ -2,13 +2,13 @@ import styles from './styles.module.scss';
 import { DIRECTION } from '../../consts';
 
 interface ArrowDoubleQuoteIconProps {
-  direction?: string;
+  direction?: DIRECTION;
   isDisabled?: boolean;
 }
 
 function ArrowDoubleQuoteIcon({
-  direction = DIRECTION.RIGHT,
-  isDisabled = false,
+  direction,
+  isDisabled,
 }: ArrowDoubleQuoteIconProps) {
   const isRight = direction === DIRECTION.RIGHT;
 
@@ -25,5 +25,10 @@ function ArrowDoubleQuoteIcon({
     </svg>
   );
 }
+
+ArrowDoubleQuoteIcon.defaultProps = {
+  isDisabled: false,
+  direction: DIRECTION.RIGHT,
+};
 
 export { ArrowDoubleQuoteIcon };

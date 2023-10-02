@@ -36,19 +36,26 @@
     cursor: default;
   }
 
-  div.active {
-    background: var(--font-color);
-    p {
-      color: var(--background-color);
-    }
-  }
-
   div:first-child {
     border-radius: 8px 0 0 8px;
   }
 
   div:last-child {
     border-radius: 0 8px 8px 0;
+  }
+
+  div:not(.active):focus {
+    border: var(--second-font-color) solid 1px;
+    outline: none;
+    z-index: 1;
+  }
+
+  div.active {
+    z-index: 0;
+    background: var(--font-color);
+    p {
+      color: var(--background-color);
+    }
   }
 }
 

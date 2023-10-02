@@ -1,13 +1,14 @@
-import styles from './styles.module.scss';
 import { useCallback, useContext, useMemo } from 'react';
+import styles from './styles.module.scss';
 import {
   convertAuthorsToOptions,
   convertLocationsToOptions,
 } from '../../consts';
 import { useAuthors, useLocations } from '../../hooks';
 import { Context } from '../../store';
-import { InputComponent, SelectComponent } from '../../components';
 import { InputRangeComponent } from '../InputRange';
+import { SelectComponent } from '../Select';
+import { InputComponent } from '../Input';
 
 function FiltersComponent() {
   const { isLoading: isAuthorsLoading, data: authors } = useAuthors();
@@ -81,7 +82,7 @@ function FiltersComponent() {
 
       <InputRangeComponent
         onFormSubmit={yearsFiltersChange}
-        label={'Created'}
+        label="Created"
         firstRangeValue={createdFrom}
         secondRangeValue={createdTo}
       />

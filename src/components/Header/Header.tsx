@@ -1,8 +1,8 @@
 import { CompanyIcon } from '../../ui';
-import { ThemeButtonComponent } from '../../components';
+import { ThemeButtonComponent } from '../ThemeButton';
 import styles from './styles.module.scss';
 
-function HeaderComponent() {
+export function HeaderComponent() {
   return (
     <header className={styles.header}>
       <CompanyIcon />
@@ -10,5 +10,3 @@ function HeaderComponent() {
     </header>
   );
 }
-
-export { HeaderComponent };
