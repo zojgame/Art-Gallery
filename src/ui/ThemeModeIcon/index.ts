@@ -1,1 +1,0 @@
-export { ThemeModeIcon } from './ThemeModeIcon';

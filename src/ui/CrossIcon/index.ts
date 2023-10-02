@@ -1,1 +1,0 @@
-export { CrossUI } from './CrossIcon';

@@ -1,1 +1,0 @@
-export { PaintComponent } from './Paint';

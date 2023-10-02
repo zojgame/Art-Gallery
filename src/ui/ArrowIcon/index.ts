@@ -1,1 +1,0 @@
-export { ArrowUI } from './ArrowIcon';
