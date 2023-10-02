@@ -10,15 +10,13 @@
     "airbnb-typescript",
     "airbnb/hooks",
     "plugin:react/jsx-runtime"
-    // "airbnb-typescript/base",
-    // "plugin:@typescript-eslint/recommended-type-checked"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "frameworkTeam/tsconfig.json",
     "ecmaVersion": "latest",
-    "sourceType": "module"
-    // "tsconfigRootDir": "__dirname
+    "sourceType": "module",
+    "tsconfigRootDir": "__dirname"
   },
   "plugins": ["react", "prettier"],
   "rules": {
